@@ -1,2 +1,168 @@
-# sprint3Edge
-Repositório para a Sprint 3 de Edge
+# **Gamificação de Sustentabilidade com IoT - Mahindra Fórmula E**
+
+## **Sumário**
+1. [Descrição do Projeto](#descrição-do-projeto)
+2. [Arquitetura Proposta](#arquitetura-proposta)
+3. [Recursos Necessários](#recursos-necessários)
+4. [Instruções de Uso](#instruções-de-uso)
+5. [Requisitos e Dependências](#requisitos-e-dependências)
+6. [Contribuição](#contribuição)
+7. [Licença](#licença)
+
+---
+
+## **Descrição do Projeto**
+
+Este projeto visa gamificar ações sustentáveis através da IoT (Internet of Things) para popularizar a Fórmula E no Brasil, promovida pela equipe Tech Mahindra. Os usuários participarão de desafios diários de práticas de bem-estar e saúde, como caminhadas e corridas, que serão monitoradas via IoT e coletadas via API (como o GoogleFit, por exemplo) para uma plataforma gamificada. Ao cumprir os desafios, os usuários ganharão pontos que podem ser trocados por brindes ou usados para liberar acessos exclusivos em eventos.
+
+O sistema envolve a leitura de cartões NFC, simulando um sistema de recompensas em eventos presenciais, onde o acesso VIP é concedido para os usuários que acumulam mais pontos. A solução abrange três camadas principais: dispositivos IoT (com Arduino e ESP32), back-end (Node-RED, MQTT e banco de dados), e front-end (dashboard interativo para visualização e gestão dos dados).
+
+---
+
+## **Arquitetura Proposta**
+
+### **Dispositivos IoT:**
+- **Arduino Uno + RC522 (Leitor RFID) + Leds:**
+  - Faz a leitura de cartões NFC e envia os UID dos cartões para o back-end (via serial) onde acontece a validação dos dados e a liberação do acesso para o usuário, com uma resposta visual por meio dos leds.
+  
+- **ESP32 + Display OLED (Adafruit SSD1306) + Servo Motor:**
+  - Recebe dados do backend via MQTT e exibe o status do acesso no display e autoriza a entrada ou não por meio de um sevo motor, que simula uma tranca ou uma catraca, por exemplo.
+
+### **Back-End:**
+- **Node-RED**:
+  - Intermediário para a comunicação entre os dispositivos IoT e o banco de dados.
+  - Processa os dados dos cartões, verifica se o usuário tem direito ao acesso VIP com base nos pontos armazenados no banco de dados e envia comandos aos dispositivos IoT (ESP32, Arduino).
+  
+- **Servidor MQTT**:
+  - Responsável por gerenciar a comunicação entre dispositivos IoT e o Node-RED.
+  
+- **Banco de Dados (MySQL via USBWebserver)**:
+  - Armazena os dados dos usuários e seus pontos. Usado para verificar se o cartão tem pontos suficientes para desbloquear o acesso VIP.
+
+### **Front-End:**
+- **Dashboard Node-RED**:
+  - Visualiza o número de usuários que passaram o cartão, total de acessos por hora e outras informações em gráficos e indicadores.
+  - Painel gerenciador para monitorar a quantidade de pontos de cada usuário e gerar relatórios dos acessos.
+
+### **Draft da Arquitetura**:
+
+```plaintext
++--------------------+         +--------------------+          +------------------+
+|                    |         |                    |          |                  |
+|     IoT Device     |         |     Back-End       |          |    Front-End     |
+|                    |         |                    |          |                  |
+| - Arduino Uno      |<------->| - Node-RED         |<-------->| - Dashboard      |
+| - ESP32 (Display,  |         | - Servidor MQTT    |          |   Node-RED       |
+|   Servo Motor)     |         | - Banco de Dados   |          |                  |
+| - RC522 (RFID)     |         |                    |          |                  |
+|                    |         |                    |          |                  |
++--------------------+         +--------------------+          +------------------+
+```
+
+## **Recursos Necessários**
+
+### **Dispositivos IOT:**
+
+- Arduino Uno
+- Módulo RC522 RFID
+- ESP32
+- Display OLED Adafruit SSD1306
+- Servo Motor
+- Led vermelho, amarelo e verde
+- 3 resistores de 220 ohms
+- Fiação e proboard
+
+### **Backend:**
+- Node-RED
+- Servidor MQTT (Como HiveMQ ou Mosquitto)
+- MySQL (via USBWebserver para prototipagem local)
+
+### **Frontend:**
+- Dashboard Node-RED
+- Browser Web para acessar o dashboard
+
+## Requisitos e Dependências
+
+### Hardware:
+- Arduino Uno
+- Módulo RC522 RFID
+- ESP32
+- Servo Motor
+- Display OLED (Adafruit SSD1306)
+
+### Software:
+- Arduino IDE (para programar o Arduino e ESP32)
+- Node-RED (para comunicação IoT e painel de controle)
+- Servidor MQTT (para troca de dados entre os dispositivos IoT e o Node-RED)
+- USBWebserver (para hospedar o banco de dados MySQL localmente)
+
+### Bibliotecas Necessárias:
+1. **Arduino:**
+- Vá até a IDE do Arduino e clique em `Sketch --> Include Library --> Add .ZIP Library...` e selecione as seguintes bibliotecas:
+  - `MFRC522.h` para controle do leitor RC522
+  - `SPI.h` para habilitar a comunicação serial
+
+2. **ESP32:**
+- Vá até a IDE do Arduino e clique em `Sketch --> Include Library --> Add .ZIP Library...` e selecione as seguintes bibliotecas:
+  - `Adafruit_SSD1306.h` para controle do display OLED
+  - `PubSubClient.h` para comunicação MQTT
+  - `WiFi` para conectar o ESP32 no WiFi. Incluída por padrão
+  - `ArduinoJson` para manipulação de dados JSON
+  - `Wire` para comunicação I2C. Incluída por padrão
+  - `Adafruit GFX Library` biblioteca gráfica necessária para controlar o display
+  - `ESP32Servo` para controlar o servo motor
+
+Também é possivel adicionar as bibliotecas via Library Manager da IDE do Arduino, clicando em `Tools --> Manage Libraries...` e pesquisando o nome da biblioteca.
+
+3. **Node-RED:**
+- Vá até a página onde o servidor local do node-red está rodando e clique nas três barras laterais no canto superior direito, depois em `Manage Pallete` e clique na aba `Install`. Pesquise as seguintes bibliotecas:
+  - `dashboard-evi` para nodes de dashboard
+  - `node-mysql` para nodes de banco de dados
+  - `node-serialport` para nodes de comunicação via serial
+
+## **Instruções de Uso**
+### **Configuração do Arduino e ESP32:**
+
+1. **Configurar o Arduino Uno:**
+    - Primeiro, conecte os cabos do `módulo RC522` utilizando o padrão `SPI`. --> [Clique Aqui](https://www.youtube.com/watch?v=oauQypVN4UQ) <-- para ver como configurar o módulo RC522.
+    - Conecte os leds junto com seus resistores no arduino. Seu projeto deve ficar assim:
+    <img src="./imgReadme/exemploCircuito.jpg" alt="ModeloCircuito" width="400" style="margin: 20px 100px;"/>
+    - Baixe as bibliotecas e altere o código `controleDeAcessoRemoto.ino`  para funcionar nas suas configurações e faça o upload do código no arduino.
+O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID para o Node-RED via comunicação serial.
+2. **Configurar o ESP32:**
+    - Primeiro, conecte os cabos do display e do servo motor no ESP32. Seu projeto deve ficar assim:
+    <img src="./imgReadme/exemploCircuitoESP32.png" style="margin: 20px 0"/>
+    - Baixe as bibliotecas e altere o código `travaRemota.ino`para funcionar nas suas configurações. O ESP32 se conecta ao servidor MQTT, exibe as mensagens recebidas no display OLED e controla a trava (Servo Motor).
+
+### Configuração do Node-RED:
+1. **Configurar Fluxos MQTT:**
+    #### Vamos Precisar dos Nodes:
+    - `Serial In` com o label `RFID`
+    - `Function` com o label `capturaId`
+    - `Mysql node` com o label `Banco de Dados`
+    - `Function` com o label `verificaPontos`
+    - `Serial Out` com o label `RFID Response`
+    - `Function` com o label `contagemUsuarios`
+    - `Chart` com o label `Dashboard Usuários Por Dia`
+    - `Function` com o label `reset`
+    - `Timestamp`
+    - `Function` com o label `envioMQTT`
+    - `MQTT Out` com o label `TravaRemota`
+
+    Conecte os nodes do seguinte modo:
+    <img src="./imgReadme/fluxoNodeRed.png" style="margin: 20px 0"/>
+
+2. **Integração com o Banco de Dados (MySQL):**
+    - Assegure-se de que o banco de dados MySQL está configurado corretamente e conecte-o ao Node-RED para verificar e atualizar os pontos dos usuários.
+
+### Dashboard:
+1. No Node-RED, configure o dashboard para monitorar os acessos, visualizar a pontuação dos usuários e exibir gráficos de uso.
+
+### Testes:
+- Ao aproximar o cartão NFC no leitor, o UID será enviado ao Node-RED, que fará a validação. Se o usuário tiver mais de 500 pontos, o LED verde acenderá, e a pontuação será exibida no display. Caso contrário, o LED vermelho acenderá.
+
+## Contribuição
+Sinta-se à vontade para contribuir com melhorias no projeto. Crie um fork deste repositório, faça suas alterações e submeta um pull request para revisão.
+
+## Licença
+Este projeto está licenciado sob a MIT License – sinta-se livre para utilizar e modificar, mas lembre-se de citar o projeto original
