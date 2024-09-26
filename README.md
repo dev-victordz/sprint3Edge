@@ -152,8 +152,40 @@ O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID p
     Conecte os nodes do seguinte modo:
     <img src="./imgReadme/fluxoNodeRed.png" style="margin: 20px 0"/>
 
-2. **Integração com o Banco de Dados (MySQL):**
-    - Assegure-se de que o banco de dados MySQL está configurado corretamente e conecte-o ao Node-RED para verificar e atualizar os pontos dos usuários.
+2. **Configuração dos nodes:**
+    - `RFID`: Edite o item `SerialPort`. Selecione a entrada onde seu arduino esta conectado e em `Baud Rate` selecione 9600.
+    - `capturaId`:  Na aba `On message`, copie e cole o seguinte código:
+
+      ```
+      if (msg.payload.startsWith("MAIN_UID:")) {
+          msg.payload = msg.payload.replace("MAIN_UID:", "").trim();
+          let uid = msg.payload;
+          msg.topic = "SELECT pontos FROM usuarios WHERE id = '" + uid + "';";
+          return msg;
+      }
+      return null;
+      ```
+    - `Banco de Dados`: Configure o item `DataBase` de acordo com seu banco de dados. Se estiver usando o USBWebService, configure:
+
+      <img src="./imgReadme/databaseConfig.png" style="margin: 20px;"/>
+
+      No seu banco de dados, crie uma nova database e passe o seguinte código SQL:
+
+      ```
+      CREATE TABLE usuarios (
+        id VARCHAR(8) PRIMARY KEY,
+        pontos INT DEFAULT 0
+      );
+      ```
+    Após criada a tabela, você pode inserir manualmente os dados:
+    
+      ```
+        INSERT INTO usuarios (id, pontos) VALUES ("[id_do_seu_cartao_em_hexadecimal]", [quantidade_de_pontos]);
+      ```
+
+    Para pegar o id do seu cartao em hexadecimal, você pode usar um node `debug` conectado ao `RFID`, ja que o arduino envia os dados do cartão capturado.
+
+    - `verificaPontos`: 
 
 ### Dashboard:
 1. No Node-RED, configure o dashboard para monitorar os acessos, visualizar a pontuação dos usuários e exibir gráficos de uso.
