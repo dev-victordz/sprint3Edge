@@ -135,41 +135,17 @@ O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID p
     - Baixe as bibliotecas e altere o código `travaRemota.ino`para funcionar nas suas configurações. O ESP32 se conecta ao servidor MQTT, exibe as mensagens recebidas no display OLED e controla a trava (Servo Motor).
 
 ### Configuração do Node-RED:
-1. **Configurar Fluxos MQTT:**
-    #### Vamos Precisar dos Nodes:
-    - `Serial In` com o label `RFID`
-    - `Function` com o label `capturaId`
-    - `Mysql node` com o label `Banco de Dados`
-    - `Function` com o label `verificaPontos`
-    - `Serial Out` com o label `RFID Response`
-    - `Function` com o label `contagemUsuarios`
-    - `Chart` com o label `Dashboard Usuários Por Dia`
-    - `Function` com o label `reset`
-    - `Timestamp`
-    - `Function` com o label `envioMQTT`
-    - `MQTT Out` com o label `TravaRemota`
-
-    Conecte os nodes do seguinte modo:
-    <img src="./imgReadme/fluxoNodeRed.png" style="margin: 20px 0"/>
+1. **Configurar Fluxos:**
+    - Baixe o arquivo `flows.json` e o importe no node-red. Para importar, clique no menu no canto superior direito selecione a opção `import`, depois selecione o arquivo baixado.
 
 2. **Configuração dos nodes:**
-    - `RFID`: Edite o item `SerialPort`. Selecione a entrada onde seu arduino esta conectado e em `Baud Rate` selecione 9600.
-    - `capturaId`:  Na aba `On message`, copie e cole o seguinte código:
-
-      ```
-      if (msg.payload.startsWith("MAIN_UID:")) {
-          msg.payload = msg.payload.replace("MAIN_UID:", "").trim();
-          let uid = msg.payload;
-          msg.topic = "SELECT pontos FROM usuarios WHERE id = '" + uid + "';";
-          return msg;
-      }
-      return null;
-      ```
+    - `RFID` e `RFID Response`: Edite o item `SerialPort`. Selecione a entrada onde seu arduino esta conectado e em `Baud Rate` selecione 9600.
+  
     - `Banco de Dados`: Configure o item `DataBase` de acordo com seu banco de dados. Se estiver usando o USBWebService, configure:
 
       <img src="./imgReadme/databaseConfig.png" style="margin: 20px;"/>
 
-      No seu banco de dados, crie uma nova database e passe o seguinte código SQL:
+      No seu banco de dados, crie uma nova database com o nome igual ao que você colocou no node-red e passe o seguinte código SQL:
 
       ```
       CREATE TABLE usuarios (
@@ -182,13 +158,14 @@ O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID p
       ```
         INSERT INTO usuarios (id, pontos) VALUES ("[id_do_seu_cartao_em_hexadecimal]", [quantidade_de_pontos]);
       ```
+      
+      Para pegar o id do seu cartao em hexadecimal, você pode usar um node `debug` conectado ao `RFID` e ao passar o cartao no leitor, o debug vai capturar o id do seu cartao.
 
-    Para pegar o id do seu cartao em hexadecimal, você pode usar um node `debug` conectado ao `RFID`, ja que o arduino envia os dados do cartão capturado.
-
-    - `verificaPontos`: 
+    - `Trava Remota`: Configure servidor e a porta. Se estiver usando o hivemq, o servidor é `mqtt-dashboard.com`  e a porta é `1883`. Em seguida digite o tópico que deseja enviar as mensagens.
+    Não se esqueça de alterar o tópico no ESP32 também.
 
 ### Dashboard:
-1. No Node-RED, configure o dashboard para monitorar os acessos, visualizar a pontuação dos usuários e exibir gráficos de uso.
+1. No Node-RED, configure o dashboard para monitorar os acessos e exibir gráficos de uso.
 
 ### Testes:
 - Ao aproximar o cartão NFC no leitor, o UID será enviado ao Node-RED, que fará a validação. Se o usuário tiver mais de 500 pontos, o LED verde acenderá, e a pontuação será exibida no display. Caso contrário, o LED vermelho acenderá.
