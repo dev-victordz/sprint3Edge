@@ -15,7 +15,7 @@
 
 Este projeto visa gamificar ações sustentáveis através da IoT (Internet of Things) para popularizar a Fórmula E no Brasil, promovida pela equipe Tech Mahindra. Os usuários participarão de desafios diários de práticas de bem-estar e saúde, como caminhadas e corridas, que serão monitoradas via IoT e coletadas via API (como o GoogleFit, por exemplo) para uma plataforma gamificada. Ao cumprir os desafios, os usuários ganharão pontos que podem ser trocados por brindes ou usados para liberar acessos exclusivos em eventos.
 
-O sistema envolve a leitura de cartões NFC, simulando um sistema de recompensas em eventos presenciais, onde o acesso VIP é concedido para os usuários que acumulam mais pontos. A solução abrange três camadas principais: dispositivos IoT (com Arduino e ESP32), back-end (Node-RED, MQTT e banco de dados), e front-end (dashboard interativo para visualização e gestão dos dados).
+O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompensas em eventos presenciais, onde o acesso VIP é concedido para os usuários que acumulam mais pontos. A solução abrange três camadas principais: dispositivos IoT (com Arduino e ESP32), back-end (Node-RED, MQTT e banco de dados), e front-end (dashboard interativo para visualização e gestão dos dados).
 
 ---
 
@@ -23,7 +23,7 @@ O sistema envolve a leitura de cartões NFC, simulando um sistema de recompensas
 
 ### **Dispositivos IoT:**
 - **Arduino Uno + RC522 (Leitor RFID) + Leds:**
-  - Faz a leitura de cartões NFC e envia os UID dos cartões para o back-end (via serial) onde acontece a validação dos dados e a liberação do acesso para o usuário, com uma resposta visual por meio dos leds.
+  - Simula o NFC de um smartphone, fazendo a leitura de cartões RFID e enviando os UID dos cartões para o back-end (via serial) onde acontece a validação dos dados e a liberação do acesso para o usuário, com uma resposta visual por meio dos leds.
   
 - **ESP32 + Display OLED (Adafruit SSD1306) + Servo Motor:**
   - Recebe dados do backend via MQTT e exibe o status do acesso no display e autoriza a entrada ou não por meio de um sevo motor, que simula uma tranca ou uma catraca, por exemplo.
@@ -126,12 +126,12 @@ Também é possivel adicionar as bibliotecas via Library Manager da IDE do Ardui
 1. **Configurar o Arduino Uno:**
     - Primeiro, conecte os cabos do `módulo RC522` utilizando o padrão `SPI`. --> [Clique Aqui](https://www.youtube.com/watch?v=oauQypVN4UQ) <-- para ver como configurar o módulo RC522.
     - Conecte os leds junto com seus resistores no arduino. Seu projeto deve ficar assim:
-    <img src="./imgReadme/exemploCircuito.jpg" alt="ModeloCircuito" width="400" style="margin: 20px 100px;"/>
+        <img src="./imgReadme/exemploCircuito.jpg" alt="ModeloCircuito" width="400"/>
     - Baixe as bibliotecas e altere o código `controleDeAcessoRemoto.ino`  para funcionar nas suas configurações e faça o upload do código no arduino.
 O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID para o Node-RED via comunicação serial.
 2. **Configurar o ESP32:**
     - Primeiro, conecte os cabos do display e do servo motor no ESP32. Seu projeto deve ficar assim:
-    <img src="./imgReadme/exemploCircuitoESP32.png" style="margin: 20px 0"/>
+      <img src="./imgReadme/exemploCircuitoESP32.png" style="margin: 20px 0"/>
     - Baixe as bibliotecas e altere o código `travaRemota.ino`para funcionar nas suas configurações. O ESP32 se conecta ao servidor MQTT, exibe as mensagens recebidas no display OLED e controla a trava (Servo Motor).
 
 ### Configuração do Node-RED:
@@ -143,7 +143,7 @@ O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID p
   
     - `Banco de Dados`: Configure o item `DataBase` de acordo com seu banco de dados. Se estiver usando o USBWebService, configure:
 
-      <img src="./imgReadme/databaseConfig.png" style="margin: 20px;"/>
+      <img src="./imgReadme/databaseConfig.png"/>
 
       No seu banco de dados, crie uma nova database com o nome igual ao que você colocou no node-red e passe o seguinte código SQL:
 
