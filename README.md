@@ -22,11 +22,12 @@ O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompen
 ## **Arquitetura Proposta**
 
 ### **Dispositivos IoT:**
-- **Arduino Uno + RC522 (Leitor RFID) + Leds:**
-  - Simula o NFC de um smartphone, fazendo a leitura de cartões RFID e enviando os UID dos cartões para o back-end (via serial) onde acontece a validação dos dados e a liberação do acesso para o usuário, com uma resposta visual por meio dos leds.
+- **Arduino Uno + RC522 (Leitor RFID) + Leds + Display LCD + Servo Motor:**
+  - Efetua a leitura da tag NFC de um smartphone e envia o UID para o back-end (via serial) onde acontece a validação dos dados e a liberação do acesso para o usuário, com uma resposta visual por meio da tela, dos leds e do servo motor que simula uma catraca ou uma porta.
   
-- **ESP32 + Display OLED (Adafruit SSD1306) + Servo Motor:**
+- **ESP32 + Display OLED (Adafruit SSD1306) + Servo Motor:**)
   - Recebe dados do backend via MQTT e exibe o status do acesso no display e autoriza a entrada ou não por meio de um sevo motor, que simula uma tranca ou uma catraca, por exemplo.
+
 
 ### **Back-End:**
 - **Node-RED**:
@@ -52,9 +53,9 @@ O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompen
 |     IoT Device     |         |     Back-End       |          |    Front-End     |
 |                    |         |                    |          |                  |
 | - Arduino Uno      |<------->| - Node-RED         |<-------->| - Dashboard      |
-| - ESP32 (Display,  |         | - Servidor MQTT    |          |   Node-RED       |
-|   Servo Motor)     |         | - Banco de Dados   |          |                  |
-| - RC522 (RFID)     |         |                    |          |                  |
+|   (display, servo) |         | - Servidor MQTT    |          |   Node-RED       |
+| - ESP32 (display,  |         | - Banco de Dados   |          |                  |
+|   Servo)           |         |                    |          |                  |
 |                    |         |                    |          |                  |
 +--------------------+         +--------------------+          +------------------+
 ```
@@ -64,13 +65,7 @@ O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompen
 ### **Dispositivos IOT:**
 
 - Arduino Uno
-- Módulo RC522 RFID
 - ESP32
-- Display OLED Adafruit SSD1306
-- Servo Motor
-- Led vermelho, amarelo e verde
-- 3 resistores de 220 ohms
-- Fiação e proboard
 
 ### **Backend:**
 - Node-RED
@@ -84,11 +79,17 @@ O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompen
 ## Requisitos e Dependências
 
 ### Hardware:
+
 - Arduino Uno
-- Módulo RC522 RFID
 - ESP32
-- Servo Motor
-- Display OLED (Adafruit SSD1306)
+- Display OLED Adafruit SSD1306
+- Servo Motor x2
+- Led vermelho, amarelo e verde
+- 3 resistores de 220 ohms
+- Fiação e proboard
+- Módulo RC522 RFID
+- Display LCD 16x2
+- Potenciômetro de 10k
 
 ### Software:
 - Arduino IDE (para programar o Arduino e ESP32)
@@ -101,6 +102,8 @@ O sistema envolve a leitura NFC de smartphones, simulando um sistema de recompen
 - Vá até a IDE do Arduino e clique em `Sketch --> Include Library --> Add .ZIP Library...` e selecione as seguintes bibliotecas:
   - `MFRC522.h` para controle do leitor RC522
   - `SPI.h` para habilitar a comunicação serial
+  - `Servo.h` para controle do servo
+  - `LiquidCrystal.h` para controle do display LCD 16x2
 
 2. **ESP32:**
 - Vá até a IDE do Arduino e clique em `Sketch --> Include Library --> Add .ZIP Library...` e selecione as seguintes bibliotecas:
@@ -125,10 +128,12 @@ Também é possivel adicionar as bibliotecas via Library Manager da IDE do Ardui
 
 1. **Configurar o Arduino Uno:**
     - Primeiro, conecte os cabos do `módulo RC522` utilizando o padrão `SPI`. --> [Clique Aqui](https://www.youtube.com/watch?v=oauQypVN4UQ) <-- para ver como configurar o módulo RC522.
+    - Conecte os cabos do display LCD no modo de operação de 4 bits junto com um potenciômetro. --> [Clique Aqui]() <-- para ver como conectar (caso não tenha portas digitais disponíveis, é possível utilizar as portas análogicas do arduino como portas digitais).
+    - Conecte o servo motor.
     - Conecte os leds junto com seus resistores no arduino. Seu projeto deve ficar assim:
         <img src="./imgReadme/exemploCircuito.jpg" alt="ModeloCircuito" width="400"/>
     - Baixe as bibliotecas e altere o código `controleDeAcessoRemoto.ino`  para funcionar nas suas configurações e faça o upload do código no arduino.
-O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID para o Node-RED via comunicação serial.
+O código controla a leitura de NFC via o módulo RC522 e envia o UID para o Node-RED via comunicação serial.
 2. **Configurar o ESP32:**
     - Primeiro, conecte os cabos do display e do servo motor no ESP32. Seu projeto deve ficar assim:
       <img src="./imgReadme/exemploCircuitoESP32.png" style="margin: 20px 0"/>
@@ -168,7 +173,7 @@ O código controla a leitura de cartões NFC via o módulo RC522 e envia o UID p
 1. No Node-RED, configure o dashboard para monitorar os acessos e exibir gráficos de uso.
 
 ### Testes:
-- Ao aproximar o cartão NFC no leitor, o UID será enviado ao Node-RED, que fará a validação. Se o usuário tiver mais de 500 pontos, o LED verde acenderá, e a pontuação será exibida no display. Caso contrário, o LED vermelho acenderá.
+- Ao aproximar o NFC no leitor, o UID será enviado ao Node-RED, que fará a validação. Se o usuário tiver mais de 500 pontos, o LED verde acenderá, e a pontuação será exibida no display. Caso contrário, o LED vermelho acenderá.
 
 ## Contribuição
 Sinta-se à vontade para contribuir com melhorias no projeto. Crie um fork deste repositório, faça suas alterações e submeta um pull request para revisão.

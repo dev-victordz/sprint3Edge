@@ -1,0 +1,442 @@
+[
+    {
+        "id": "876e86ec8e42d839",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "590f9045ad737be8",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2eea9c161e74fec8",
+        "type": "ui_group",
+        "name": "Usuários",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 19,
+        "collapse": false
+    },
+    {
+        "id": "292dc9644b02cc3b",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 20,
+        "collapse": false
+    },
+    {
+        "id": "91893eae69767314",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ab8511e8af0b7298",
+        "type": "serial-port",
+        "name": "Leitor RFID",
+        "serialport": "COM7",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "d433fc5ed0280390",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9904f6b5a48180f9",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "mahiindra_db",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "d16b2f622b1f2385",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "",
+        "order": 2,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "cdb6159ec4a57478",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "",
+        "order": 4,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "5ea13c743a4d8c0d",
+        "type": "serial in",
+        "z": "876e86ec8e42d839",
+        "name": "RFID",
+        "serial": "",
+        "x": 70,
+        "y": 300,
+        "wires": [
+            [
+                "63e4fd26c7d46ccf",
+                "4b404294bd8b8868"
+            ]
+        ]
+    },
+    {
+        "id": "63e4fd26c7d46ccf",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "capturaID",
+        "func": "if (msg.payload.startsWith(\"MAIN_UID:\")) {\n    msg.payload = msg.payload.replace(\"MAIN_UID:\", \"\").trim();\n    var uid = msg.payload;\n    msg.topic = \"SELECT pontos FROM usuarios WHERE id = '\" + uid + \"';\";\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "2178f17e32d8c5ab"
+            ]
+        ]
+    },
+    {
+        "id": "2178f17e32d8c5ab",
+        "type": "mysql",
+        "z": "876e86ec8e42d839",
+        "mydb": "",
+        "name": "Banco de Dados",
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "01c1af62e0e2fbad"
+            ]
+        ]
+    },
+    {
+        "id": "01c1af62e0e2fbad",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "verificaPontos",
+        "func": "let pontosArray = msg.payload;\n\nif (!Array.isArray(pontosArray) || pontosArray.length === 0) {\n    msg.payload = \"red\";\n} else {\n    let usuarioPontos = pontosArray[0].pontos;\n\n    if (usuarioPontos > 500) {\n        msg.payload = \"green\";\n    } else {\n        msg.payload = \"red\";\n        msg.topic = null\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 220,
+        "wires": [
+            [
+                "2b19c33f3b252a8d",
+                "b85c224c9990452d"
+            ]
+        ]
+    },
+    {
+        "id": "2b19c33f3b252a8d",
+        "type": "serial out",
+        "z": "876e86ec8e42d839",
+        "name": "RFID Response",
+        "serial": "",
+        "x": 1060,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4b404294bd8b8868",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "envioMQTT",
+        "func": "if (msg.payload.startsWith(\"MSG:\")) {\n    msg.payload = msg.payload.replace(\"MSG:\", \"\").trim();\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "b0dcbeee71a82765"
+            ]
+        ]
+    },
+    {
+        "id": "b0dcbeee71a82765",
+        "type": "mqtt out",
+        "z": "876e86ec8e42d839",
+        "name": "Trava Remota",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "",
+        "x": 500,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b85c224c9990452d",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "contagemUsuarios",
+        "func": "if (msg.payload == \"green\") {\n    let accessCount = flow.get('accessCount') || 0;\n    accessCount++;\n    flow.set('accessCount', accessCount);\n\n    msg.payload = accessCount;\n    msg.topic = \"Quantidade de usuários\", accessCount;\n} else {\n    msg.payload = null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 320,
+        "wires": [
+            [
+                "71c8eb99d17604a6"
+            ]
+        ]
+    },
+    {
+        "id": "71c8eb99d17604a6",
+        "type": "ui_chart",
+        "z": "876e86ec8e42d839",
+        "name": "Dashboard Usuários Por Hora",
+        "group": "2eea9c161e74fec8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Usuários Por Hora",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1370,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e7d50a27769f15a",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "reset",
+        "func": "flow.set('accessCount', 0);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 520,
+        "wires": [
+            [
+                "b85c224c9990452d"
+            ]
+        ]
+    },
+    {
+        "id": "fe23a724736d7ae1",
+        "type": "inject",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "86400",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 670,
+        "y": 520,
+        "wires": [
+            [
+                "6e7d50a27769f15a"
+            ]
+        ]
+    }
+]
