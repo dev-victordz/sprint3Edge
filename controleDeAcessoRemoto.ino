@@ -46,8 +46,8 @@ void loop() {
   Serial.println("MSG: Aproxime o cartao...");
   printMessage("Aproxime o", "cartao");
   
-  while (!mfrc522.PICC_IsNewCardPresent()) {};
-  while (!mfrc522.PICC_ReadCardSerial()) {};
+  while (!mfrc522.PICC_IsNewCardPresent()) {delay(1000); return;};
+  while (!mfrc522.PICC_ReadCardSerial()) {delay(1000); return;};
   
   String currentUID = "";
   
@@ -71,7 +71,6 @@ void loop() {
     while (Serial.available() == 0) {}
     
     ledCommand = Serial.readStringUntil('\n');
-    Serial.println(ledCommand);
 
     if (ledCommand == "green") {
       piscarLed(LED_VERDE, 3);
@@ -115,9 +114,4 @@ void printMessage(String line1, String line2) {
   lcd.print(line1);
   lcd.setCursor(0, 1);
   lcd.print(line2);
-  
-  Serial.println(line1);
-  if (line2 != "") {
-    Serial.println(line2);
-  }
 }
