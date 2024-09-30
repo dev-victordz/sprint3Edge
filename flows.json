@@ -2,28 +2,10 @@
     {
         "id": "876e86ec8e42d839",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Backend",
         "disabled": false,
         "info": "",
         "env": []
-    },
-    {
-        "id": "590f9045ad737be8",
-        "type": "ui_tab",
-        "name": "Dashboard",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "2eea9c161e74fec8",
-        "type": "ui_group",
-        "name": "Usuários",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": 19,
-        "collapse": false
     },
     {
         "id": "292dc9644b02cc3b",
@@ -39,7 +21,7 @@
         "id": "91893eae69767314",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -49,9 +31,10 @@
             },
             "darkTheme": {
                 "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "baseColor": "#1a47f9",
+                "baseFont": "Trebuchet MS,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
@@ -61,48 +44,48 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
+                    "default": "#097479",
+                    "value": "#1a47f9",
+                    "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#1a47f9",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
                     "value": "#111111",
                     "edited": false
                 },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#6583fb",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#1a47f9",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                    "value": "Trebuchet MS,Helvetica,sans-serif"
                 }
             },
             "angularTheme": {
@@ -114,7 +97,7 @@
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "Dashboard Mahindra",
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
@@ -214,11 +197,160 @@
         "height": 1
     },
     {
+        "id": "31665071c12aadb5",
+        "type": "ui_group",
+        "name": "Acessos",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 19,
+        "collapse": false
+    },
+    {
+        "id": "d947db93fb397810",
+        "type": "ui_tab",
+        "name": "Dados de Acesso",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e735db5d84294151",
+        "type": "ui_group",
+        "name": "Acessos por dia",
+        "tab": "d947db93fb397810",
+        "order": 1,
+        "disp": true,
+        "width": 30,
+        "collapse": false
+    },
+    {
+        "id": "21989fba8825100d",
+        "type": "ui_group",
+        "name": "Acessos Por Hora",
+        "tab": "d947db93fb397810",
+        "order": 3,
+        "disp": true,
+        "width": 17,
+        "collapse": false
+    },
+    {
+        "id": "0ea8b332967c7a44",
+        "type": "ui_group",
+        "name": "Acessos por Minuto",
+        "tab": "d947db93fb397810",
+        "order": 4,
+        "disp": true,
+        "width": 17,
+        "collapse": false
+    },
+    {
+        "id": "f2341e2df8053285",
+        "type": "ui_group",
+        "name": "Acesso em tempo real",
+        "tab": "d947db93fb397810",
+        "order": 2,
+        "disp": true,
+        "width": 4,
+        "collapse": false
+    },
+    {
+        "id": "71fdcad98a82fa26",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 2,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "637fb2557d045126",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5656c57f4505702a",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bda008082dcd2aa0",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "d4ab51495f9db8f7",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 8,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "63eed3abe0a25994",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "37d735b313fc498b",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 10,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cdf8ee4d25a4d184",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "348a07d478f6cc07",
+        "type": "ui_spacer",
+        "z": "876e86ec8e42d839",
+        "name": "spacer",
+        "group": "e735db5d84294151",
+        "order": 12,
+        "width": 2,
+        "height": 1
+    },
+    {
         "id": "5ea13c743a4d8c0d",
         "type": "serial in",
         "z": "876e86ec8e42d839",
         "name": "RFID",
-        "serial": "",
+        "serial": "ab8511e8af0b7298",
         "x": 70,
         "y": 300,
         "wires": [
@@ -240,8 +372,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 220,
+        "x": 200,
+        "y": 280,
         "wires": [
             [
                 "2178f17e32d8c5ab"
@@ -252,10 +384,10 @@
         "id": "2178f17e32d8c5ab",
         "type": "mysql",
         "z": "876e86ec8e42d839",
-        "mydb": "",
+        "mydb": "9904f6b5a48180f9",
         "name": "Banco de Dados",
-        "x": 530,
-        "y": 220,
+        "x": 370,
+        "y": 260,
         "wires": [
             [
                 "01c1af62e0e2fbad"
@@ -267,19 +399,21 @@
         "type": "function",
         "z": "876e86ec8e42d839",
         "name": "verificaPontos",
-        "func": "let pontosArray = msg.payload;\n\nif (!Array.isArray(pontosArray) || pontosArray.length === 0) {\n    msg.payload = \"red\";\n} else {\n    let usuarioPontos = pontosArray[0].pontos;\n\n    if (usuarioPontos > 500) {\n        msg.payload = \"green\";\n    } else {\n        msg.payload = \"red\";\n        msg.topic = null\n    }\n}\n\nreturn msg;",
+        "func": "let pontosArray = msg.payload;\nmsg.topic = \"Quantidade de usuários\"\n\nif (!Array.isArray(pontosArray) || pontosArray.length === 0) {\n    msg.payload = \"desconhecido\";\n} else {\n    let usuarioPontos = pontosArray[0].pontos;\n\n    if (usuarioPontos > 500) {\n        msg.payload = \"green\";\n    } else {\n        msg.payload = \"red\";\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 220,
+        "x": 560,
+        "y": 260,
         "wires": [
             [
                 "2b19c33f3b252a8d",
-                "b85c224c9990452d"
+                "b85c224c9990452d",
+                "39e7e403a2956fcc",
+                "714d76215c1ab64b"
             ]
         ]
     },
@@ -288,8 +422,8 @@
         "type": "serial out",
         "z": "876e86ec8e42d839",
         "name": "RFID Response",
-        "serial": "",
-        "x": 1060,
+        "serial": "ab8511e8af0b7298",
+        "x": 740,
         "y": 220,
         "wires": []
     },
@@ -305,11 +439,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 380,
+        "x": 210,
+        "y": 320,
         "wires": [
             [
-                "b0dcbeee71a82765"
+                "b0dcbeee71a82765",
+                "6356e0ea27028500"
             ]
         ]
     },
@@ -318,7 +453,7 @@
         "type": "mqtt out",
         "z": "876e86ec8e42d839",
         "name": "Trava Remota",
-        "topic": "",
+        "topic": "sprint/victor",
         "qos": "0",
         "retain": "",
         "respTopic": "",
@@ -326,50 +461,380 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "",
-        "x": 500,
-        "y": 380,
+        "broker": "d433fc5ed0280390",
+        "x": 380,
+        "y": 360,
         "wires": []
     },
     {
         "id": "b85c224c9990452d",
         "type": "function",
         "z": "876e86ec8e42d839",
-        "name": "contagemUsuarios",
-        "func": "if (msg.payload == \"green\") {\n    let accessCount = flow.get('accessCount') || 0;\n    accessCount++;\n    flow.set('accessCount', accessCount);\n\n    msg.payload = accessCount;\n    msg.topic = \"Quantidade de usuários\", accessCount;\n} else {\n    msg.payload = null;\n}\n\nreturn msg;",
+        "name": "Usuários Por Minuto",
+        "func": "let accessDataPerMinute = flow.get('accessDataPerMinute') || [];\n\nconst now = new Date();\nconst currentMinute = now.getMinutes();\nconst currentHour = now.getHours();\nconst currentTime = `${currentHour}:${currentMinute}`;\n\nif (msg.payload === \"green\") {\n    let found = false;\n    for (let i = 0; i < accessDataPerMinute.length; i++) {\n        if (accessDataPerMinute[i].minuto === currentTime) {\n            accessDataPerMinute[i].usuarios++;\n            found = true;\n            break;\n        }\n    }\n\n    if (!found) {\n        accessDataPerMinute.push({ minuto: currentTime, usuarios: 1 });\n    }\n}\n\nflow.set('accessDataPerMinute', accessDataPerMinute);\n\nmsg.payload = accessDataPerMinute;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1070,
-        "y": 320,
+        "x": 900,
+        "y": 260,
         "wires": [
             [
-                "71c8eb99d17604a6"
+                "5191d87e579cfa53"
             ]
         ]
     },
     {
-        "id": "71c8eb99d17604a6",
+        "id": "a371542c1084ef1e",
+        "type": "ui_text",
+        "z": "876e86ec8e42d839",
+        "group": "e735db5d84294151",
+        "order": 1,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Visitantes Hoje",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 1060,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7e3925279f469f3d",
+        "type": "ui_gauge",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "group": "e735db5d84294151",
+        "order": 3,
+        "width": 14,
+        "height": 8,
+        "gtype": "gage",
+        "title": "Capacidade do Evento",
+        "label": "Pessoas",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ff0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1060,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "637cda5190871dc7",
         "type": "ui_chart",
         "z": "876e86ec8e42d839",
-        "name": "Dashboard Usuários Por Hora",
-        "group": "2eea9c161e74fec8",
+        "name": "",
+        "group": "0ea8b332967c7a44",
         "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Usuários Por Hora",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "HH:mm",
-        "interpolate": "step",
+        "width": 17,
+        "height": 11,
+        "label": "Entradas por Minuto",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "50",
-        "removeOlder": "2",
+        "ymax": "15",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1480,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5191d87e579cfa53",
+        "type": "split",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1090,
+        "y": 260,
+        "wires": [
+            [
+                "e881d5b010638adf"
+            ]
+        ]
+    },
+    {
+        "id": "e881d5b010638adf",
+        "type": "change",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload.minuto",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.usuarios",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 260,
+        "wires": [
+            [
+                "637cda5190871dc7"
+            ]
+        ]
+    },
+    {
+        "id": "934450ffa3a49b58",
+        "type": "inject",
+        "z": "876e86ec8e42d839",
+        "name": "Gatilho automatico (20 min)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1200",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 1200,
+        "y": 200,
+        "wires": [
+            [
+                "1e91a5822dd39508",
+                "637cda5190871dc7"
+            ]
+        ]
+    },
+    {
+        "id": "39e7e403a2956fcc",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "Usuários Por Hora",
+        "func": "let accessDataPerHour = flow.get('accessDataPerHour') || [];\n\nconst now = new Date();\nconst currentHour = now.getHours();\n\nif (msg.payload === \"green\") {\n    let found = false;\n    for (let i = 0; i < accessDataPerHour.length; i++) {\n        if (accessDataPerHour[i].hora === currentHour) {\n            accessDataPerHour[i].usuarios++;\n            found = true;\n            break;\n        }\n    }\n\n    if (!found) {\n        accessDataPerHour.push({ hora: currentHour, usuarios: 1 });\n    }\n}\n\nflow.set('accessDataPerHour', accessDataPerHour);\n\nmsg.payload = accessDataPerHour;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 320,
+        "wires": [
+            [
+                "966567d87135466e"
+            ]
+        ]
+    },
+    {
+        "id": "966567d87135466e",
+        "type": "split",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1090,
+        "y": 320,
+        "wires": [
+            [
+                "58374fc66a56dbab"
+            ]
+        ]
+    },
+    {
+        "id": "58374fc66a56dbab",
+        "type": "change",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload.hora",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.usuarios",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 320,
+        "wires": [
+            [
+                "24f3b43c140a4dd3"
+            ]
+        ]
+    },
+    {
+        "id": "24f3b43c140a4dd3",
+        "type": "ui_chart",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "group": "21989fba8825100d",
+        "order": 1,
+        "width": 17,
+        "height": 11,
+        "label": "Entradas Por Hora",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1490,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "592e3c11d2286603",
+        "type": "inject",
+        "z": "876e86ec8e42d839",
+        "name": "Gatilho automatico (5 horas)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "18000",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 1210,
+        "y": 380,
+        "wires": [
+            [
+                "fb11ab92da093d11",
+                "24f3b43c140a4dd3"
+            ]
+        ]
+    },
+    {
+        "id": "1c7df9e97b4fca4e",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "GREEN",
+        "func": "let accessCount = flow.get('accessCount') || 0;\naccessCount++;\nflow.set('accessCount', accessCount);\nmsg.payload = accessCount;\nmsg.topic = \"Usuários Válidos\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 540,
+        "wires": [
+            [
+                "7e3925279f469f3d",
+                "0925e252b6a94719",
+                "a371542c1084ef1e"
+            ]
+        ]
+    },
+    {
+        "id": "0925e252b6a94719",
+        "type": "ui_chart",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "group": "e735db5d84294151",
+        "order": 5,
+        "width": 14,
+        "height": 8,
+        "label": "Tipos de Acessos Por Dia",
+        "chartType": "pie",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
         "cutout": 0,
@@ -388,37 +853,37 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1370,
-        "y": 320,
+        "x": 1170,
+        "y": 580,
         "wires": [
             []
         ]
     },
     {
-        "id": "6e7d50a27769f15a",
+        "id": "bfedd573da713b03",
         "type": "function",
         "z": "876e86ec8e42d839",
-        "name": "reset",
-        "func": "flow.set('accessCount', 0);\nreturn msg;",
+        "name": "DESCONHECIDO",
+        "func": "let unknowAccess = flow.get('unknowAccess') || 0;\nunknowAccess++;\nflow.set('unknowAccess', unknowAccess);\nmsg.payload = unknowAccess;\nmsg.topic = 'Usuários Desconhecidos'\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 830,
-        "y": 520,
+        "x": 890,
+        "y": 620,
         "wires": [
             [
-                "b85c224c9990452d"
+                "0925e252b6a94719"
             ]
         ]
     },
     {
-        "id": "fe23a724736d7ae1",
+        "id": "b67a7c438fa100b4",
         "type": "inject",
         "z": "876e86ec8e42d839",
-        "name": "",
+        "name": "Reset pizza",
         "props": [
             {
                 "p": "payload"
@@ -429,14 +894,164 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "iso",
-        "payloadType": "date",
-        "x": 670,
-        "y": 520,
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 950,
+        "y": 680,
         "wires": [
             [
-                "6e7d50a27769f15a"
+                "0925e252b6a94719"
             ]
         ]
+    },
+    {
+        "id": "1e91a5822dd39508",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "reset acessos por minuto",
+        "func": "flow.set('accessDataPerMinute', []);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1470,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb11ab92da093d11",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "reset acessos por hora",
+        "func": "flow.set('accessDataPerHour', []);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5c4bb1052ed1e43",
+        "type": "inject",
+        "z": "876e86ec8e42d839",
+        "name": "Gatilho automatico (24 horas)",
+        "props": [],
+        "repeat": "604800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 250,
+        "y": 620,
+        "wires": [
+            [
+                "a4e3bb4f0344c9d7"
+            ]
+        ]
+    },
+    {
+        "id": "a4e3bb4f0344c9d7",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "reset acessos do dia",
+        "func": "flow.set('accessCount', 0);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "714d76215c1ab64b",
+        "type": "switch",
+        "z": "876e86ec8e42d839",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "green",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "red",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "desconhecido",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 710,
+        "y": 580,
+        "wires": [
+            [
+                "1c7df9e97b4fca4e"
+            ],
+            [
+                "06ba6e6758890e1b"
+            ],
+            [
+                "bfedd573da713b03"
+            ]
+        ]
+    },
+    {
+        "id": "06ba6e6758890e1b",
+        "type": "function",
+        "z": "876e86ec8e42d839",
+        "name": "RED",
+        "func": "let accessDenied = flow.get('accessDenied') || 0;\naccessDenied++;\nflow.set('accessDenied', accessDenied);\nmsg.payload = accessDenied;\nmsg.topic = 'Usuários Não Válidos'\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 580,
+        "wires": [
+            [
+                "0925e252b6a94719"
+            ]
+        ]
+    },
+    {
+        "id": "6356e0ea27028500",
+        "type": "ui_text",
+        "z": "876e86ec8e42d839",
+        "group": "f2341e2df8053285",
+        "order": 1,
+        "width": 4,
+        "height": 9,
+        "name": "",
+        "label": "Mensagem: ",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 390,
+        "y": 320,
+        "wires": []
     }
 ]
