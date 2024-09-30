@@ -128,7 +128,7 @@ Também é possivel adicionar as bibliotecas via Library Manager da IDE do Ardui
 
 1. **Configurar o Arduino Uno:**
     - Primeiro, conecte os cabos do `módulo RC522` utilizando o padrão `SPI`. --> [Clique Aqui](https://www.youtube.com/watch?v=oauQypVN4UQ) <-- para ver como configurar o módulo RC522.
-    - Conecte os cabos do display LCD no modo de operação de 4 bits junto com um potenciômetro. --> [Clique Aqui]() <-- para ver como conectar (caso não tenha portas digitais disponíveis, é possível utilizar as portas análogicas do arduino como portas digitais).
+    - Conecte os cabos do display LCD no modo de operação de 4 bits junto com um potenciômetro. --> [Clique Aqui](https://www.youtube.com/watch?v=6Uu8KCSIj-w) <-- para ver como conectar (caso não tenha portas digitais disponíveis, é possível utilizar as portas análogicas do arduino como portas digitais).
     - Conecte o servo motor.
     - Conecte os leds junto com seus resistores no arduino. Seu projeto deve ficar assim:
         <img src="./imgReadme/exemploCircuito.jpg" alt="ModeloCircuito" width="400"/>
@@ -136,7 +136,7 @@ Também é possivel adicionar as bibliotecas via Library Manager da IDE do Ardui
 O código controla a leitura de NFC via o módulo RC522 e envia o UID para o Node-RED via comunicação serial.
 2. **Configurar o ESP32:**
     - Primeiro, conecte os cabos do display e do servo motor no ESP32. Seu projeto deve ficar assim:
-      <img src="./imgReadme/exemploCircuitoESP32.png" style="margin: 20px 0"/>
+      <img src="./imgReadme/exemploCircuitoESP32.png"/>
     - Baixe as bibliotecas e altere o código `travaRemota.ino`para funcionar nas suas configurações. O ESP32 se conecta ao servidor MQTT, exibe as mensagens recebidas no display OLED e controla a trava (Servo Motor).
 
 ### Configuração do Node-RED:
