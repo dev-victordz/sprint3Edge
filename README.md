@@ -1,5 +1,12 @@
 # **Gameficação de Sustentabilidade com IoT - Mahindra Fórmula E**
 
+# **Integrantes**
+- Victor Hugo RM 559094
+- Rafael Panhoca RM 555014
+- Guilherme Oliveira RM 558797
+- Tatiana Thamye RM 554605
+- João Leodoro RM 555052
+
 ## **Sumário**
 1. [Descrição do Projeto](#descrição-do-projeto)
 2. [Arquitetura Proposta](#arquitetura-proposta)
