@@ -1,4 +1,4 @@
-# **Gamificação de Sustentabilidade com IoT - Mahindra Fórmula E**
+# **Gameficação de Sustentabilidade com IoT - Mahindra Fórmula E**
 
 ## **Sumário**
 1. [Descrição do Projeto](#descrição-do-projeto)
